@@ -1,75 +1,134 @@
 <template>
-  <header id="header" :class="headerFixedClass">
-    <nav class="container mx-auto text-lg text-gray-700">
-      <a href="#" class="hidden md:flex items-center hover:text-brand">
-        Home
-      </a>
-      <a href="#" class="hidden md:flex items-center hover:text-brand">
-        Rooms
-      </a>
-      <a href="#" class="hidden md:flex items-center hover:text-brand">
-        Restaurant
-      </a>
+  <div>
+    <header id="header" :class="headerFixedClass">
+      <nav class="container mx-auto text-lg text-gray-700">
+        <a href="#" class="hidden md:flex items-center hover:text-brand">
+          Home
+        </a>
+        <a href="#" class="hidden md:flex items-center hover:text-brand">
+          Rooms
+        </a>
+        <a href="#" class="hidden md:flex items-center hover:text-brand">
+          Restaurant
+        </a>
 
-      <a href="#" class="flex items-center justify-start lg:justify-center">
-        <img class="logo" src="~/assets/logo.png" alt="Logo los cocos" />
-      </a>
+        <a href="#" class="flex items-center justify-start lg:justify-center">
+          <img class="logo" src="~/assets/logo.png" alt="Logo los cocos" />
+        </a>
 
-      <a
-        href="#"
-        class="hidden md:flex items-center justify-end hover:text-brand"
-      >
-        Weedings
-      </a>
-      <a
-        href="#"
-        class="hidden md:flex items-center justify-end hover:text-brand"
-      >
-        Membership
-      </a>
-      <a
-        href="#"
-        class="hidden md:flex items-center justify-end hover:text-brand"
-      >
-        Contact
-      </a>
+        <a
+          href="#"
+          class="hidden md:flex items-center justify-end hover:text-brand"
+        >
+          Weedings
+        </a>
+        <a
+          href="#"
+          class="hidden md:flex items-center justify-end hover:text-brand"
+        >
+          Membership
+        </a>
+        <a
+          href="#"
+          class="hidden md:flex items-center justify-end hover:text-brand"
+        >
+          Contact
+        </a>
 
-      <!-- mobile menu -->
-      <div class="ml-auto flex md:hidden">
-        <Button bg="gray-soft" @click="toogleBookingModal">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="text-brand"
+        <!-- mobile links -->
+        <div class="ml-auto flex md:hidden">
+          <Button bg="gray-soft" @click="toogleBookingModal">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-brand"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <path d="M16 2v4M8 2v4M3 10h18" />
+            </svg>
+          </Button>
+          <Button class="ml-4" @click="toogleMobileMenu">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-white"
+            >
+              <path d="M3 12h18M3 6h18M3 18h18" />
+            </svg>
+          </Button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- mobile menu -->
+    <div class="fixed inset-0 mobile-menu z-50" v-if="showMobileMenu">
+      <div class="fixed inset-0 bg-black opacity-75"></div>
+      <div
+        class="fixed inset-0 flex justify-center items-center mobile-menu__container"
+        @click="toogleMobileMenu"
+      >
+        <nav
+          class="bg-white shadow-lg p-6 flex flex-col absolute right-0 top-0 bottom-0 w-2/3"
+          @click.stop="() => null"
+        >
+          <a
+            href="#"
+            class="p-4 text-2xl font-semibold bg-gray-soft mb-4 items-center hover:text-white hover:bg-brand"
+            @click="toogleMobileMenu"
           >
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-            <path d="M16 2v4M8 2v4M3 10h18" />
-          </svg>
-        </Button>
-        <Button class="ml-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="text-white"
+            Home
+          </a>
+          <a
+            href="#"
+            class="p-4 text-2xl font-semibold bg-gray-soft mb-4 items-center hover:text-white hover:bg-brand"
+            @click="toogleMobileMenu"
           >
-            <path d="M3 12h18M3 6h18M3 18h18" />
-          </svg>
-        </Button>
+            Rooms
+          </a>
+          <a
+            href="#"
+            class="p-4 text-2xl font-semibold bg-gray-soft mb-4 items-center hover:text-white hover:bg-brand"
+            @click="toogleMobileMenu"
+          >
+            Restaurant
+          </a>
+          <a
+            href="#"
+            class="p-4 text-2xl font-semibold bg-gray-soft mb-4 items-center hover:text-white hover:bg-brand"
+            @click="toogleMobileMenu"
+          >
+            Weedings
+          </a>
+          <a
+            href="#"
+            class="p-4 text-2xl font-semibold bg-gray-soft mb-4 items-center hover:text-white hover:bg-brand"
+            @click="toogleMobileMenu"
+          >
+            Membership
+          </a>
+          <a
+            href="#"
+            class="mt-auto p-4 text-2xl font-semibold bg-gray-soft mb-4 items-center hover:text-white hover:bg-brand"
+            @click="toogleMobileMenu"
+          >
+            Contact
+          </a>
+        </nav>
       </div>
-    </nav>
-  </header>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -100,11 +159,16 @@ export default defineComponent({
       store.commit('booking/setShowBookingModal', !state.showBookingModal)
     }
 
+    const showMobileMenu = computed(() => state.showMobileMenu)
+    const toogleMobileMenu = () => {
+      store.commit('booking/setShowMobileMenu', !state.showMobileMenu)
+    }
+
     onMounted(() => {
       let navBar = document.getElementById('header')
       console.log(navBar)
       window.document.onscroll = () => {
-        if (window.scrollY > navBar.offsetTop + 220) {
+        if (!state.showMobileMenu && window.scrollY > navBar.offsetTop + 220) {
           active.value = true
         } else {
           active.value = false
@@ -119,6 +183,8 @@ export default defineComponent({
     return {
       headerFixedClass,
       toogleBookingModal,
+      showMobileMenu,
+      toogleMobileMenu,
     }
   },
 })
@@ -146,6 +212,13 @@ header {
     @media screen and (max-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
     }
+  }
+}
+
+.mobile-menu {
+  &__container {
+    animation: slideLeft 0.62s both;
+    animation-timing-function: ease;
   }
 }
 </style>
