@@ -21,7 +21,7 @@
       >
         <div
           class="bg-white shadow-lg rounded-lg p-10 font-semibold relative flex flex-col"
-          @click.stop="() => {}"
+          @click.stop="() => null"
         >
           <DatePicker
             inline

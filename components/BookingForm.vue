@@ -3,7 +3,79 @@
     <div class="py-12">
       <div class="py-8 relative">
         <div class="bg-brand opacity-25 absolute inset-0"></div>
+
         <!-- mobile -->
+        <div
+          class="container relative text-lg mx-auto bg-white shadow-lg p-4 flex lg:hidden"
+        >
+          <div class="flex flex-1 justify-around">
+            <div>
+              <div class="font-bold">Reservation date</div>
+              <div class="flex flex-col md:flex-row">
+                <div class="flex">
+                  <span class="flex-1"> From </span>
+                  <span class="font-semibold px-2">{{ checkIn }}</span>
+                </div>
+                <div class="flex">
+                  <span class="flex-1">to</span>
+                  <span class="font-semibold px-2">{{ checkOut }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ml-2 px-6">
+              <div class="font-bold">People</div>
+              <div class="flex flex-col md:flex-row">
+                <div class="flex md:mr-6">
+                  <span class="flex-1">Adults: </span>
+                  <span class="font-semibold">{{ pax }}</span>
+                </div>
+                <div v-if="childs > 0" class="flex">
+                  <span class="flex-1">Children: </span>
+                  <span class="font-semibold">{{ childs }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ml-auto flex items-center justify-end">
+            <Button class="h-full px-16" @click="showMobileMenu = true">
+              Modify
+            </Button>
+          </div>
+
+          <div class="fixed inset-0" v-if="showMobileMenu">
+            <div class="fixed inset-0 bg-black opacity-75"></div>
+            <div
+              class="fixed inset-0 flex justify-center items-center"
+              @click="showMobileMenu = false"
+            >
+              <div
+                class="bg-gray-soft shadow-lg p-6 flex flex-col"
+                @click.stop="() => null"
+              >
+                <DatesInput
+                  :checkIn="checkIn"
+                  :checkOut="checkOut"
+                  @input="onDateSelected"
+                />
+                <div class="grid grid-cols-2 gap-4 my-8">
+                  <PaxSelector
+                    prefix="Adults"
+                    :icon="require('~/assets/arrow-down.svg')"
+                    v-model="pax"
+                  />
+                  <PaxSelector
+                    prefix="Children"
+                    :icon="require('~/assets/arrow-down.svg')"
+                    v-model="childs"
+                  />
+                </div>
+                <Button @click="setFilters">Modify</Button>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- desktop -->
         <div class="container mx-auto relative justify-center z-0 booking-form">
@@ -46,6 +118,8 @@ export default defineComponent({
     const { store } = useContext()
     const state = store.state.booking
 
+    const showMobileMenu = ref(false)
+
     const checkIn = ref(state.filters.checkIn)
     const checkOut = ref(state.filters.checkOut)
     const pax = ref(state.filters.pax)
@@ -63,6 +137,7 @@ export default defineComponent({
     }
 
     const setFilters = () => {
+      showMobileMenu.value = false
       store.dispatch('booking/setFilters', {
         checkIn: checkIn.value,
         checkOut: checkOut.value,
@@ -73,6 +148,7 @@ export default defineComponent({
     }
 
     return {
+      showMobileMenu,
       checkIn,
       checkOut,
       pax,
