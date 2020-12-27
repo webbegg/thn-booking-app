@@ -20,6 +20,7 @@ export const state = () => {
     filters,
     selectedRoom: savedSelectedRoom,
     infoMessage: '',
+    showBookingModal: false,
     rooms: [
       {
         id: 1,
@@ -69,6 +70,9 @@ export const mutations = {
   setPromoCode(state, code) {
     state.filters.promo_code = code
   },
+  setShowBookingModal(state, status) {
+    state.showBookingModal = status
+  },
 }
 
 /** actions */
@@ -84,6 +88,9 @@ export const actions = {
   },
   setPromoCode({ commit }, code) {
     commit('setPromoCode', code)
+  },
+  setShowBookingModal({ commit }, status) {
+    commit('setShowBookingModal', status)
   },
   saveLocalData({ commit, state }) {
     window.localStorage.setItem(

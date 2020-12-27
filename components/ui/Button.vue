@@ -1,6 +1,6 @@
 <template>
   <button
-    class="py-4 px-4 flex justify-center items-center bg-brand text-white text-lg font-bold focus:outline-none duration-200 ease-in-out"
+    :class="`py-4 px-4 flex justify-center items-center bg-${bg} text-white text-lg font-bold focus:outline-none duration-200 ease-in-out`"
     @click="onClick"
   >
     <slot />
@@ -8,6 +8,11 @@
 </template>
 <script>
 export default {
+  props: {
+    bg: {
+      default: 'brand',
+    },
+  },
   methods: {
     onClick() {
       this.$emit('click')

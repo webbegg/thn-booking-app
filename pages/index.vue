@@ -31,9 +31,13 @@
       </div>
     </main>
     <Footer />
-    <div class="fixed inset-0 z-50" v-if="infoMessage">
+
+    <!-- infoMessage -->
+    <div class="fixed inset-0 z-50 info-message" v-if="infoMessage">
       <div class="bg-black absolute opacity-75 inset-0 z-10"></div>
-      <div class="absolute inset-0 z-20 flex justify-center items-center">
+      <div
+        class="absolute inset-0 z-20 flex justify-center items-center info-message__container"
+      >
         <div
           class="bg-white shadow-lg px-20 py-10 font-semibold flex flex-col items-center"
         >
@@ -91,3 +95,44 @@ export default defineComponent({
   },
 })
 </script>
+
+<style lang="scss">
+.info-message {
+  &__container {
+    animation: slideDown 0.62s both;
+    animation-timing-function: ease;
+  }
+}
+
+.slideDown {
+  animation-name: slideDown;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  visibility: visible !important;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.slideLeft {
+  animation-name: slideLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  visibility: visible !important;
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+</style>

@@ -39,16 +39,16 @@
           </div>
 
           <div class="ml-auto flex items-center justify-end">
-            <Button class="h-full px-16" @click="showMobileMenu = true">
+            <Button class="h-full px-16" @click="toogleBookingModal">
               Modify
             </Button>
           </div>
 
-          <div class="fixed inset-0" v-if="showMobileMenu">
+          <div class="fixed inset-0 booking-modal" v-if="showBookingModal">
             <div class="fixed inset-0 bg-black opacity-75"></div>
             <div
-              class="fixed inset-0 flex justify-center items-center"
-              @click="showMobileMenu = false"
+              class="fixed inset-0 flex justify-center items-center booking-modal__container"
+              @click="toogleBookingModal"
             >
               <div
                 class="bg-gray-soft shadow-lg p-6 flex flex-col"
@@ -106,7 +106,7 @@ import {
   defineComponent,
   useContext,
   ref,
-  reactive,
+  computed,
 } from '@nuxtjs/composition-api'
 
 import Input from '~/components/ui/Input'
@@ -118,7 +118,7 @@ export default defineComponent({
     const { store } = useContext()
     const state = store.state.booking
 
-    const showMobileMenu = ref(false)
+    const showBookingModal = computed(() => state.showBookingModal)
 
     const checkIn = ref(state.filters.checkIn)
     const checkOut = ref(state.filters.checkOut)
@@ -136,8 +136,12 @@ export default defineComponent({
       }) */
     }
 
+    const toogleBookingModal = () => {
+      store.commit('booking/setShowBookingModal', !state.showBookingModal)
+    }
+
     const setFilters = () => {
-      showMobileMenu.value = false
+      toogleBookingModal()
       store.dispatch('booking/setFilters', {
         checkIn: checkIn.value,
         checkOut: checkOut.value,
@@ -148,7 +152,8 @@ export default defineComponent({
     }
 
     return {
-      showMobileMenu,
+      showBookingModal,
+      toogleBookingModal,
       checkIn,
       checkOut,
       pax,
@@ -175,6 +180,13 @@ export default defineComponent({
 
     @media (max-width: 1024px) {
       display: none;
+    }
+  }
+
+  .booking-modal {
+    &__container {
+      animation: slideDown 0.62s both;
+      animation-timing-function: ease;
     }
   }
 }
