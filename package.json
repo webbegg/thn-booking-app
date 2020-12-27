@@ -10,8 +10,11 @@
     "test": "jest"
   },
   "dependencies": {
+    "@nuxtjs/composition-api": "^0.17.0",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6"
+    "date-fns": "^2.16.1",
+    "nuxt": "^2.14.6",
+    "vue2-datepicker": "^3.8.2"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^3.1.0",
@@ -22,6 +25,8 @@
     "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.5.0",
     "prettier": "^2.1.2",
+    "sass": "^1.30.0",
+    "sass-loader": "^10.1.0",
     "vue-jest": "^3.0.4"
   }
 }
