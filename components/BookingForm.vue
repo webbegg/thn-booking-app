@@ -1,11 +1,12 @@
 <template>
-  <div class="booking-component">
+  <div class="bookign-form">
     <div class="py-12">
       <div class="py-8 relative">
         <div class="bg-brand opacity-25 absolute inset-0"></div>
-        <div
-          class="container mx-auto relative flex justify-center z-0 booking-form"
-        >
+        <!-- mobile -->
+
+        <!-- desktop -->
+        <div class="container mx-auto relative justify-center z-0 booking-form">
           <DatesInput
             :checkIn="checkIn"
             :checkOut="checkOut"
@@ -84,7 +85,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.booking-component {
+.bookign-form {
   background: url('~assets/bookingform-bg.png') no-repeat center;
   background-size: cover;
 
@@ -95,6 +96,10 @@ export default defineComponent({
       minmax(auto, 200px);
     display: grid;
     gap: 16px;
+
+    @media (max-width: 1024px) {
+      display: none;
+    }
   }
 }
 </style>

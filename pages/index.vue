@@ -48,13 +48,13 @@
       </div>
     </div>
 
-    <!-- DEBUG SCREEN -->
-    <div class="bg-black text-white fixed right-0 bottom-0 text-lg px-4">
+    <!-- Debug screen size -->
+    <!-- <div class="bg-black text-white fixed right-0 bottom-0 text-lg px-4">
       <span class="md:hidden">SM - SMALL</span>
       <span class="hidden md:block lg:hidden">MD - MEDIUM</span>
       <span class="hidden lg:block xl:hidden">LG - LARGE</span>
       <span class="hidden xl:block">XL - EXTRA LG</span>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -67,6 +67,11 @@ import RoomsList from '~/components/RoomsList'
 import BookingSummary from '~/components/BookingSummary'
 
 export default defineComponent({
+  head() {
+    return {
+      title: 'Booking - Los Cocos Bungalows',
+    }
+  },
   setup() {
     const { store, route } = useContext()
 

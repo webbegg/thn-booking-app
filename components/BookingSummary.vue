@@ -16,8 +16,10 @@
       </div>
 
       <div class="mt-4 w-full md:w-1/2 lg:w-1/3 xl:w-full">
-        <div class="font-bold">Reservation date</div>
-        <div>
+        <div class="font-bold text-left md:text-right lg:text-left">
+          Reservation date
+        </div>
+        <div class="text-left md:text-right lg:text-left">
           From
           <span class="font-semibold px-2">{{ checkIn }}</span>
           to
