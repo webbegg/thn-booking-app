@@ -6,7 +6,7 @@
         alt="Logo footer Los Cocos Bungalows"
         class="mr-8"
       />
-      <nav class="flex mt-3 xl:mt-0">
+      <nav class="flex my-3 xl:my-0">
         <a href="#" class="mr-3 hover:text-brand">Terms and conditions</a>
         <a href="#" class="mr-3 hover:text-brand">Privacy Policy</a>
         <a href="#" class="mr-3 hover:text-brand">About us</a>

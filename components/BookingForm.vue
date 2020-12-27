@@ -39,7 +39,7 @@
           </div>
 
           <div class="ml-auto flex items-center justify-end">
-            <Button class="h-full px-16" @click="toogleBookingModal">
+            <Button class="h-full md:px-16" @click="toogleBookingModal">
               Modify
             </Button>
           </div>

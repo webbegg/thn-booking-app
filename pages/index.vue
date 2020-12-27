@@ -8,7 +8,11 @@
           <div class="flex flex-col items-center xl:items-start xl:w-2/3">
             <h1 class="title mb-2">Rooms & Rates</h1>
             <p class="text-xl mb-6">Plan your perfect stay at our hotel</p>
-            <img src="~/assets/booking-steps.png" alt="Booking process steps" />
+            <img
+              src="~/assets/booking-steps.png"
+              alt="Booking process steps"
+              class="sm:mx-10"
+            />
           </div>
 
           <div class="hidden xl:flex justify-center w-1/3">
@@ -53,12 +57,12 @@
     </div>
 
     <!-- Debug screen size -->
-    <div class="bg-black text-white fixed right-0 bottom-0 text-lg px-4">
+    <!-- <div class="bg-black text-white fixed right-0 bottom-0 text-lg px-4">
       <span class="md:hidden">SM - SMALL</span>
       <span class="hidden md:block lg:hidden">MD - MEDIUM</span>
       <span class="hidden lg:block xl:hidden">LG - LARGE</span>
       <span class="hidden xl:block">XL - EXTRA LG</span>
-    </div>
+    </div> -->
   </div>
 </template>
 

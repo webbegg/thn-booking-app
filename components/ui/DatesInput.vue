@@ -1,15 +1,9 @@
 <template>
-  <div class="grid grid-cols-2 gap-4">
-    <Input
-      :value="checkIn"
-      :icon="require('~/assets/calendar.svg')"
-      @iconPressed="showDatepicker = true"
-      readonly
-    />
+  <div class="grid grid-cols-2 gap-4" @click="showDatepicker = true">
+    <Input :value="checkIn" :icon="require('~/assets/calendar.svg')" readonly />
     <Input
       :value="checkOut"
       :icon="require('~/assets/calendar.svg')"
-      @iconPressed="showDatepicker = true"
       readonly
     />
 

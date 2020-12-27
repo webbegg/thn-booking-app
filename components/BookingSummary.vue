@@ -1,8 +1,10 @@
 <template>
   <div class="text-lg">
     <h1 class="title-2">Reservation Summary</h1>
-    <div v-if="room" class="mt-10 flex flex-wrap xl:block">
-      <div class="title w-full xl:w-auto">{{ room.description }}</div>
+    <div class="mt-10 flex flex-wrap xl:block">
+      <div v-if="room" class="title w-full xl:w-auto">
+        {{ room.description }}
+      </div>
 
       <div class="mt-4 flex w-full md:w-1/2 lg:w-1/3 xl:w-full">
         <div class="mr-10">
@@ -43,31 +45,33 @@
         </div>
       </div>
 
-      <hr class="my-10 border-gray-light w-full" v-if="promoCode" />
+      <hr class="my-10 border-gray-light w-full" v-if="room && promoCode" />
 
       <div
-        class="xl:flex justify-between text-xl w-1/2 xl:w-full"
-        v-if="promoCode"
+        class="xl:flex justify-between sm:text-sm md:text-xl w-1/2 xl:w-full"
+        v-if="room && promoCode"
       >
         <div class="font-bold">Room price:</div>
         <div class="font-extrabold">{{ room.price }}€</div>
       </div>
       <div
-        class="xl:flex justify-between text-xl w-1/2 xl:w-full"
-        v-if="promoCode"
+        class="xl:flex justify-between sm:text-sm md:text-xl w-1/2 xl:w-full"
+        v-if="room && promoCode"
       >
-        <div class="font-bold text-right">Promo code (-10%):</div>
+        <div class="font-bold text-right">Promo code:</div>
         <div class="font-extrabold text-right">-{{ discount }}€</div>
       </div>
 
-      <hr class="my-10 border-gray-light w-full" />
+      <hr v-if="room" class="my-10 border-gray-light w-full" />
 
-      <div class="flex justify-between text-3xl w-full">
+      <div v-if="room" class="flex justify-between text-3xl w-full">
         <div class="font-bold">Total</div>
         <div class="font-extrabold ml-auto">{{ total }}€</div>
       </div>
 
-      <Button class="mt-10 w-full" @click="saveLocalData">Save</Button>
+      <Button v-if="room" class="mt-10 w-full" @click="saveLocalData">
+        Save
+      </Button>
     </div>
   </div>
 </template>

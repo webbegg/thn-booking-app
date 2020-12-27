@@ -1,6 +1,6 @@
 <template>
   <select
-    class="py-4 px-4 h-full w-full bg-transparent focus:outline-none font-semibold text-center"
+    class="py-4 px-4 w-full bg-transparent focus:outline-none font-semibold text-center"
     :value="value"
     @input="onChange($event.currentTarget.value)"
   >

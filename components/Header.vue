@@ -55,6 +55,7 @@
           </Button>
           <Button class="ml-4" @click="toogleMobileMenu">
             <svg
+              v-if="!showMobileMenu"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -67,16 +68,30 @@
             >
               <path d="M3 12h18M3 6h18M3 18h18" />
             </svg>
+            <svg
+              v-else
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-x"
+            >
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
           </Button>
         </div>
       </nav>
     </header>
 
     <!-- mobile menu -->
-    <div class="fixed inset-0 mobile-menu z-50" v-if="showMobileMenu">
-      <div class="fixed inset-0 bg-black opacity-75"></div>
+    <div class="fixed inset-0 mobile-menu z-50 mt-20" v-if="showMobileMenu">
+      <div class="absolute inset-0 bg-black opacity-75"></div>
       <div
-        class="fixed inset-0 flex justify-center items-center mobile-menu__container"
+        class="absolute inset-0 flex justify-center items-center mobile-menu__container"
         @click="toogleMobileMenu"
       >
         <nav
@@ -168,7 +183,7 @@ export default defineComponent({
       let navBar = document.getElementById('header')
       console.log(navBar)
       window.document.onscroll = () => {
-        if (!state.showMobileMenu && window.scrollY > navBar.offsetTop + 220) {
+        if (window.scrollY > navBar.offsetTop + 80) {
           active.value = true
         } else {
           active.value = false
