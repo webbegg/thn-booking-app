@@ -21,11 +21,17 @@
         <div class="font-bold text-left md:text-right lg:text-left">
           Reservation date
         </div>
-        <div class="text-left md:text-right lg:text-left">
-          From
-          <span class="font-semibold px-2">{{ checkIn }}</span>
-          to
-          <span class="font-semibold px-2">{{ checkOut }}</span>
+        <div
+          class="text-left md:text-right lg:text-left flex flex-wrap md:justify-end lg:justify-start"
+        >
+          <div>
+            From
+            <span class="font-semibold px-2">{{ checkIn }}</span>
+          </div>
+          <div>
+            to
+            <span class="font-semibold pl-2">{{ checkOut }}</span>
+          </div>
         </div>
       </div>
 
